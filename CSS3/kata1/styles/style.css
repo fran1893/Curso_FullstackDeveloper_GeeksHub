@@ -32,3 +32,7 @@ p:not(.last) {
     p::after {
          content: "❤️💕😍👍🙌";      /*los emojis se agregan con windows + . */
     }
+
+    p::before{
+        content: "✌️ "
+    }
