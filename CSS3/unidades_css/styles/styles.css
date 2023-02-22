@@ -1,0 +1,23 @@
+:root {
+    font-size: 5px;
+    /*De aqui sacara su valor el rem */
+}
+
+p {
+    font-size: 2em;
+    /*32 pixeles, toma como referencia los 16px que son el tamaño de fuente por defecto de los navegadores*/
+}
+
+
+section {
+    font-size: 10px;
+}
+
+section p {
+    font-size: 2em;
+    /* Toma como referencia el font-size del padre, en este caso seria section por lo cual serian 20px*/
+}
+
+aside p {
+    font-size: 1rem;
+}
