@@ -1,3 +1,34 @@
-body{
+/* body {
     background: red;
+} */
+
+div:first-child {
+    color: blue;
 }
+
+p:nth-child(2) {
+    color: red;
+}
+
+p:nth-of-type(2) {
+    color: green;
+}
+
+p:not(.last) {
+    background: grey;
+}
+
+::selection {
+    /* SOLO PUEDEN MODIFICARSE
+    ESTAS              ES PARA MODIFICAR EL ESTILO CUANDO SE SELECIONA CON EL RATON
+    PROPIEDADES*/
+    background: yellow;
+    color: black;
+    text-shadow: 2px 2px 2px
+    rgba(0, 0, 0,0.5);
+    }
+
+
+    p::after {
+         content: "❤️💕😍👍🙌";      /*los emojis se agregan con windows + . */
+    }
