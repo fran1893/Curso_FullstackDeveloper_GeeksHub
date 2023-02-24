@@ -1,0 +1,21 @@
+.containerGrid {
+    background: red;
+    padding: 5px;
+    width: 300px;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    /* la cantidad de fr son el numero de columnas que quieres en la grid */
+
+    /* grid-template-columns: 150px 150px;
+    grid-template-rows: 40px 40px 40px; */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+    column-gap: 20px;
+}
+
+.containerGrid>div {
+    background: white;
+    text-align: center;
+    border: 1px solid black;
+}
