@@ -11,9 +11,20 @@ section {
     /* justify-content: space-around; */
     /* justify-content: space-between; */
     /* justify-content: space-evenly; */
+    /* align-items: center; */
+    /* align-items: baseline; alinea con respecto al texto dentro de los elementos*/
+    /* align-items: flex-end; */
+    /* align-items: flex-start; */
 
+    /* align-self: ; esta  propiedad es para alinear a un hijo especifico sin alterar a los demas*/
 
-    /* flex-direction cambia la direccion del eje principal, por defecto es flex-direction: row; */
+    /* order: ; con order posicionas a un hijo especifico con respecto a los demas hijos*/
+
+    /* flex-wrap: ; habilita a que los elementos hijos puedan caer hacia abajo en busca de espacio, el caso contrario seria contraerse para mantener la linea */
+
+    /* align-content: ; posiciona a todos los elementos como un contenido solo */
+
+    /* flex-direction cambia la direccion del eje principal, por defecto es flex-direction: row; justify-content alinea elementos en el eje principal y align-items alinea elementos en el eje secundario*/
 }
 
 div {
