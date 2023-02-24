@@ -1,0 +1,9 @@
+.back{
+    width: 800px;
+    height: 450px;
+    background-color: aquamarine;
+    background-image: url(../images/dinosaurio.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
