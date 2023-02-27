@@ -6,7 +6,7 @@ h1::after {
 .box {
     background-color: red;
     padding: 1em;
-    border: 1px solid black;
+    border: 2px solid rgb(251, 247, 247);
 }
 
 /* Media query for medium size */
