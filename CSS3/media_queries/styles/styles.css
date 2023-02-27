@@ -1,0 +1,35 @@
+/* Mobile Styles */
+h1::after{
+    content: " MOBILE"
+}
+
+/* Media query for medium size */
+@media (min-width: 768px) {
+    body {
+        background-color: red;
+    }
+
+    h1::after {
+        content: " TABLET";
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        background-color: rgb(0, 13, 255);
+    }
+
+    h1::after {
+        content: " BIG TABLET";
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        background-color: rgb(0, 255, 38);
+    }
+
+    h1::after {
+        content: " DESKTOP";
+    }
+}
