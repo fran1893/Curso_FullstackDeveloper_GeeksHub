@@ -1,0 +1,24 @@
+.container {
+    background-color: yellow;
+}
+
+
+
+
+
+.col, .col-6 {
+    background-color: aqua;
+    outline: 1px solid black;
+}
+
+.single-column {
+    margin: 10px;
+}
+
+.double-column {
+    margin: 10px;
+}
+
+.four-column {
+    margin: 10px;
+}
