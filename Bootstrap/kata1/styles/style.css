@@ -2,10 +2,6 @@
     background-color: yellow;
 }
 
-
-
-
-
 .col, .col-6 {
     background-color: aqua;
     outline: 1px solid black;
@@ -21,4 +17,19 @@
 
 .four-column {
     margin: 10px;
+}
+
+.my-row{
+    height: 100px;
+    outline: 1px solid black;
+}
+
+.my-col{
+    outline: 1px solid black;
+    background-color: white;
+    text-align: center;
+}
+
+.reto-col{
+    outline: 1px solid black;
 }
