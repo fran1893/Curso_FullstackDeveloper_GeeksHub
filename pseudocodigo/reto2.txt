@@ -17,7 +17,7 @@ Algoritmo:
     IF NOT 
         IF Num1 < Num2 THEN
             escribir "Num1 es menor que Num2"
-        IF NOT
+        ELSE
             escribir "Num1 es igual a Num2"
         FINSI
     FINSI
