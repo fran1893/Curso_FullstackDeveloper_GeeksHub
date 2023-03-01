@@ -1,36 +1,26 @@
 .top-col,
 .bottom-col {
     background-color: greenyellow;
-    /* height: 40px; */
     border: 1px solid black;
 }
 
-/* .bottom-col{
-    height: 20px;
-} */
-
-/* .second-row{
-    height: 400px;
-} */
+/* con min-hight y porcentaje puedo jugar con la altura teniendo en cuenta el padre */
 .second-row-first-col {
     background-color: red;
     border: 1px solid black;
 }
 
 .violet-col {
-    /* height: 50px; */
     background-color: blueviolet;
     border: 1px solid black;
 }
 
 .orange-col {
     background-color: orange;
-    /* height: 200px; */
     border: 1px solid black;
 }
 
 .blue-col {
     background-color: blue;
-    /* height: 80px; */
     border: 1px solid black;
 }
