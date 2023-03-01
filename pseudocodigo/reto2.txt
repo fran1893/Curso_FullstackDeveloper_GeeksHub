@@ -19,7 +19,7 @@ Algoritmo:
             escribir "Num1 es menor que Num2"
         ELSE
             escribir "Num1 es igual a Num2"
-        FINSI
-    FINSI
+        ENDIF
+    ENDIF
 Fin del Programa
 

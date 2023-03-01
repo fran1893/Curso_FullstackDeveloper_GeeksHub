@@ -1,0 +1,39 @@
+RETO 3: Crear el pseudocódigo de un programa que almacenen 3 números en 3 variables
+A, B y C. El diagrama debe decidir cuál es el mayor y cuál es el menor.
+
+
+Programa: CualMayor
+Entorno: A, B y C son números
+
+Algoritmo: 
+    escribir: "Introduzca un numero"
+    leer numero y almacenarlo como A
+
+    escribir: "Introduzca un segundo numero"
+    leer numero y almacenarlo como B
+
+    escribir: "Introduzca un tercer numero"
+    leer numero y almacenarlo como C
+
+   IF A > B AND A > C THEN
+    escribir: A" es el mayor"
+    IF B < C THEN
+        escribir: B" es el menor"
+    IF NOT
+        escribir: C" es el menor"
+    END IF
+IF NOT IF B > A AND B > C THEN
+    escribir: B" es el mayor"
+    IF A < C THEN
+        escribir: A" es el menor"
+    IF NOT
+        escribir: C" es el menor"
+    END IF
+IF NOT
+    escribir: C" es el mayor"
+    IF A < B THEN
+        escribir: A" es el menor"
+    IF NOT
+        escribir: B" es el menor"
+    END IF
+Fin del programa
