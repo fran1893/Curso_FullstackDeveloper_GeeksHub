@@ -1,0 +1,25 @@
+RETO 2: Hacer el pseudocódigo de un programa que permita leer 2 números diferentes y
+nos diga cual es el mayor de los 2 números.
+
+
+Programa: MayorQue
+Entorno: Num1 y Num2 son números
+
+Algoritmo:
+    escribir: "Introduzca un número"
+    leer número y almacenarlo como Num1
+    
+    escribir: "Introudzca un segundo número"
+    leer número y almacenarlo como Num2
+
+    IF Num1 > Num2 THEN
+        escribir "Num1 es mayor que Num2"
+    IF NOT 
+        IF Num1 < Num2 THEN
+            escribir "Num1 es menor que Num2"
+        IF NOT
+            escribir "Num1 es igual a Num2"
+        FINSI
+    FINSI
+Fin del Programa
+
