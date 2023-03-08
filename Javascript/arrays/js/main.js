@@ -60,6 +60,48 @@
 // 2. El resultado de ese módulo es la posición
 // del siguiente array. TRWAGMYFPDXBNJZSQVHLCKET
 
-let letras = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
+// let letras = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
 
-console.log(12345678 % 23)
+// letraDNI();
+
+// function letraDNI() {
+//     numDNI = Number(prompt("Entra tu numero de DNI y te diremos que letra es compatible con el"))
+//     index = numDNI % 23;
+//     letra = letras[index];
+//     alert(`Tu DNI es: ${letra + numDNI}`)
+// }
+
+
+
+// -------------------------------------------------------------------------------------------------
+// 8. Crea un array de 10 posiciones de números con valores pedidos por prompt. Muestra
+// por consola el índice y el valor al que corresponde. Haz dos métodos, uno para
+// rellenar valores y otro para mostrar.
+
+// DECLARACION DE VARIABLE
+let numeros = [];
+
+// FUNCIONES
+function rellenar() {
+    for (let i = 0; i < 10; i++) {
+        numero = prompt(`Dime el ${(i + 1)}º numero para agregar al array`);
+        numeros.push(numero);
+    }
+}
+
+function mostrar() {
+    indiceYvalor = "";
+    for (let i = 0; i < numeros.length; i++) {
+        indiceYvalor += `${numeros[i]} esta en el indice: ${i}\n`
+    }
+
+    console.log(numeros)
+    console.log(indiceYvalor)
+
+}
+
+// Procesamiento
+rellenar()
+mostrar()
+
+// ---------------------------------------------------------------------------------------------------
