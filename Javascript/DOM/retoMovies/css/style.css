@@ -1,0 +1,9 @@
+#movies td, #movies th {
+    border: 1px solid grey;
+    text-align: left;
+    padding: 8px;
+}
+
+#movies tr:nth-child(even) {
+    background-color: #dddddd;
+}
