@@ -21,7 +21,7 @@ uiUnico.style.color = "#fff";
 
 uiEmail.style.border = "4px solid blue";
 
-for (sp of uiSpan){
-    sp.style.backgroundColor = "red";
-    sp.style.color = "#fff";
+for (sp of uiSpan) {
+  sp.style.backgroundColor = "red";
+  sp.style.color = "#fff";
 }
