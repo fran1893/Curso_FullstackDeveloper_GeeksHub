@@ -27,3 +27,7 @@ boton.addEventListener("click", () => {
       console.log(err.message);
     });
 });
+
+const borrarParrafo = () => {
+  printResult.innerHTML = "";
+};
