@@ -1,4 +1,4 @@
-// Create a function that prints your name on the screen for 1 second after being called.
+// Create a function that prints the sum of two numbers on the screen 1 second after being called.
 
 const h1 = document.getElementById("objective");
 
