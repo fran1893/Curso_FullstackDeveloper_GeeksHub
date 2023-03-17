@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Movies API</title>
+  </head>
+  <body>
+    <div class="navBar">
+      <a href="#" class="myButton" onClick="getPopularMovies()"
+        >Popular Movies</a
+      ><a
+        href="#"
+        id="upcomingButton"
+        class="myButton"
+        onClick="getUpcomingMovies()"
+        >Upcoming</a
+      >
+    </div>
+    <div id="container">
+      <div id="movies"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
