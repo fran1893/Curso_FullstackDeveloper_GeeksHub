@@ -2,6 +2,7 @@ COMANDO PARA CREAR EL CONTENEDOR DE MYSQL:
 docker run --name mysqlServer -p 3306:3306 -v mysqldata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
 
 --name : El nombre que le queramos dar al contenedor.
+
 -v :/var/lib/mysql  : Crea un volumen con el nombre que le demos, mapea los datos del contenedor en una carpeta fuera del contenedor.
 
 -p puerto:puerto_contenedor ---- Crea una conexión de modo que lo que pase en el puerto dentro del contenedor se pueda ver en el puerto fuera del contenedor
@@ -11,7 +12,7 @@ EJEMPLO DE CREACIÓN DE BASE DE DATOS CON MYSQL:
 CREATE DATABASE alumnos CHARACTER SET Latin1 COLLATE latin1_spanish_ci;
 
 
-Para mostrar la relación de todas las base de datos:
+Para mostrar todas las base de datos:
 SHOW DATABASES;
 
 Para acceder a una de ellas:
