@@ -1,0 +1,33 @@
+#root {
+    padding-top: 3em;
+}
+
+#users,
+#products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.user,
+.product {
+    max-width: 150px;
+    background-color: lightgray;
+    padding: 1em;
+}
+
+.user__image,
+.product__image {
+    width: 100%;
+}
+
+.user__name,
+.product__title {
+    font-weight: bold;
+}
+
+.user__age,
+.product__price {
+    font-size: 0.8em;
+}
