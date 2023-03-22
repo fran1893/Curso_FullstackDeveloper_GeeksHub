@@ -8,6 +8,8 @@ docker run --name mysqlServer -p 3306:3306 -v mysqldata:/var/lib/mysql -e MYSQL_
 -p puerto:puerto_contenedor ---- Crea una conexión de modo que lo que pase en el puerto dentro del contenedor se pueda ver en el puerto fuera del contenedor
 
 
+
+
 EJEMPLO DE CREACIÓN DE BASE DE DATOS CON MYSQL:
 CREATE DATABASE alumnos CHARACTER SET Latin1 COLLATE latin1_spanish_ci;
 
@@ -17,3 +19,16 @@ SHOW DATABASES;
 
 Para acceder a una de ellas:
 USE [NOMBRE_BASEDEDATOS];
+
+
+Muestra todas las tablas:
+SHOW FULL TABLES;
+
+Mostrar la estructura de una tabla:
+DESCRIBE nombre_tabla
+
+
+
+
+COMANDO CREAR UN CONTENEDOR CON MARIADB:
+docker run --name mariadb_container -p 3306:3306 -v mariadb:/var/lib/mysql -e MARIADB_ROOT_PASSWORD=root -d mariadb:latest   
