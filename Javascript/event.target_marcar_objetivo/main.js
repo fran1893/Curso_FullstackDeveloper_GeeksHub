@@ -1,5 +1,15 @@
 const htmlCasillas = document.querySelectorAll(".casilla");
-const mapCasillas = [];
+const mapCasillas = [
+  "vacio",
+  "vacio",
+  "vacio",
+  "vacio",
+  "vacio",
+  "vacio",
+  "vacio",
+  "vacio",
+  "vacio",
+];
 let turno1 = false;
 
 const manageClick = (element) => {
