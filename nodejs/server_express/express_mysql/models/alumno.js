@@ -2,20 +2,34 @@ const db = require("../db/db");
 
 const Alumno = {};
 
-Alumno.fetchAll = (cb, page = 1) => {
-  if (!db) return cb("Can't connect to database");
+Alumno.LIMIT = 2;
 
-  const limit = 2;
-  const offset = (page - 1) * limit;
+Alumno.fetchAll = (page = 1) => {
+  return new Promise((resolve, reject) => {
+    if (!db) reject(new Error("Can't connect to database"));
 
-  const SQL = `SELECT * FROM alumnos LIMIT ${limit} OFFSET ${offset}`;
+    const { LIMIT } = Alumno;
+    const offset = (page - 1) * LIMIT;
+    const SQL = `SELECT * FROM alumnos LIMIT ${LIMIT} OFFSET ${offset}`;
 
-  db.query(SQL, (err, rows) => {
-    if (err) return cb(err);
-    else return cb(null, rows);
+    db.query(SQL, (err, rows) => {
+      if (err) reject(err);
+      else resolve(rows);
+    });
   });
 };
 
-Alumno.getStudents;
+Alumno.getCount = () => {
+  return new Promise((resolve, reject) => {
+    if (!db) reject(new Error("Can't connect to database"));
+
+    const SQL = `SELECT COUNT(id) as count FROM alumnos`;
+
+    db.query(SQL, (err, rows) => {
+      if (err) reject(err);
+      else resolve(rows[0].count);
+    });
+  });
+};
 
 module.exports = Alumno;
