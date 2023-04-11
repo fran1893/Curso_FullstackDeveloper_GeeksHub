@@ -23,3 +23,6 @@ sequelize db:seed --seed 20230331111132-alumno.js
 
 # usar todas los seed
 sequelize db:seed:all
+
+# deshacer la seed
+sequelize db:seed:undo
