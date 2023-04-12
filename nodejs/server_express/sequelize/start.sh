@@ -1,6 +1,6 @@
 ###########################################################   SOLO UNA VEZ
 
-# crear base de datos
+# crear base de datos ANTES HACER CONFIG.JSON
 sequelize db:create
 
 # crear modelo Nacionalidad
@@ -42,17 +42,6 @@ sequelize db:seed --seed 02-seed-alumno.js
 sequelize db:seed:undo
 sequelize db:seed:undo:all
 sequelize db:seed:undo --seed 03-seed-alumno.js
-
-# crear base de datos ANTES HACER CONFIG.JSON
-sequelize db:create
-
-# crear modelo Alumno
-sequelize model:generate --name Alumno --attributes 'nombre:string,apellidos:string,edad:integer,fecha_nacimiento:date,activo:enum:{si,no},id_nacionalidad:integer,id_direccion:integer'
-
-# crear modelo Nacionalidad
-sequelize model:generate --name Nacionalidad --attributes 'nombre_nacion:string'
-
-
 
 
 
