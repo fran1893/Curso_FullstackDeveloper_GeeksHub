@@ -1,0 +1,127 @@
+CREATE CONTAINER WITH MONGO DB:
+
+docker run 
+-d --name mongodb
+-e MONGO_INITDB_ROOT_USERNAME=root 
+-e MONGO_INITDB_ROOT_PASSWORD=root 
+-p 27017:27017 
+-v mongo-data:/data/db 
+mongo:latest
+
+
+
+ENTRAR AL CONTAINER DE MONGODB:
+
+docker exec -it mongodb mongosh -u root -p
+
+
+
+
+COMANDOS MONGODB:
+
+show dbs                              : muestra todas las bases de datos
+show collections                      : muestra todas las collections
+use nombreDB                          : crea la base de datos con el nombre dado (se guarda luego de crear la collection)
+db.createCollection("posts")          : crea la colecction "posts" dentro de la base de datos donde nos encontremos
+db.nombreCollection.find()                       : Muestra todos los registros dentro de esa coleccion
+db.movies.find({ "title": "Titanic" })           : busca la película donde el título sea Titanic
+db.movies.find({ "title": "Titanic" }).count()   : muestra el numero de coincidencias de la consulta
+db.movies.find({"runtime":{$gt:120}})            : peliculas que tengan mayor runtime que 120
+db.products.drop()                               : elimina la coleccion products
+
+
+>db.products.find({"nombre":"TV"}) -> where nombre = "TV"
+>db.products.find({"price":{$lt:400}}) -> where price < 400
+>db.products.find({"price":{$lte:400}})-> where price<= 400
+>db.products.find({"price":{$gt:410}}) -> where price> 410
+>db.products.find({"price":{$gte:410}})-> where price>=410
+>db.products.find({"price":{$ne:500}}) -> where price!=500
+
+db.movies.updateOne({title: "Tag"} , {$set: {runtime:200}})     : cambia el runtime de la pelicula con titulo "Tag"
+
+
+
+AGREGA PLOT A LA PELICULA CON TITULO "Tag"
+db.movies.updateOne( { title: "Tag" },
+{
+  $set: {
+    plot: "One month every year, five highly competitive friends hit the ground running for a no-holds-barred game of tag"    
+  }
+})
+
+
+db.movies.deleteOne({title: "Tag"})            : Elimina la pelicula que tenga como titulo "Tag"
+
+
+
+
+Comparación
+
+Los siguientes operadores pueden utilizarse en las consultas para comparar valores:
+
+$eq: Los valores son iguales
+$ne: Los valores no son iguales
+$gt: El valor es mayor que otro valor
+$gte: El valor es mayor o igual que otro valor
+$lt: El valor es menor que otro valor
+$lte: El valor es menor o igual que otro valor
+$in: El valor coincide con una matriz
+
+
+
+
+TO INSERT A NEW DOCUMENT INTO THE sample_mflix.movies COLLECTION:
+
+use sample_mflix
+
+db.movies.insertOne(
+  {
+    title: "The Favourite",
+    genres: [ "Drama", "History" ],
+    runtime: 121,
+    rated: "R",
+    year: 2018,
+    directors: [ "Yorgos Lanthimos" ],
+    cast: [ "Olivia Colman", "Emma Stone", "Rachel Weisz" ],
+    type: "movie"
+  }
+)
+
+
+
+.insertMany() AÑADE VARIOS REGISTROS DENTRO DE LA COLLECTION
+
+db.movies.insertMany([
+   {
+      title: "Jurassic World: Fallen Kingdom",
+      genres: [ "Action", "Sci-Fi" ],
+      runtime: 130,
+      rated: "PG-13",
+      year: 2018,
+      directors: [ "J. A. Bayona" ],
+      cast: [ "Chris Pratt", "Bryce Dallas Howard", "Rafe Spall" ],
+      type: "movie"
+    },
+    {
+      title: "Tag",
+      genres: [ "Comedy", "Action" ],
+      runtime: 105,
+      rated: "R",
+      year: 2018,
+      directors: [ "Jeff Tomsic" ],
+      cast: [ "Annabelle Wallis", "Jeremy Renner", "Jon Hamm" ],
+      type: "movie"
+    }
+])
+
+
+
+
+Comandos MongoDB para el find(), los criterios de búsqueda son equivalentes a las claúsulas where de
+SQL
+>db.products.find({"nombre":"TV"}) ->where nombre = "TV"
+>db.products.find({"price":{$lt:400}}) -> where price < 400
+>db.products.find({"price":{$lte:400}})-> where price<= 400
+>db.products.find({"price":{$gt:410}}) -> where price> 410
+>db.products.find({"price":{$gte:410}})-> where price>=410
+>db.products.find({"price":{$ne:500}}) -> where price!=500
