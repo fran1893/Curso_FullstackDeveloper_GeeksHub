@@ -51,8 +51,6 @@ function App() {
       <List list={drinks2} />
       <hr />
       <Counter />
-      <hr />
-      <Counter />
     </div>
   );
 }
