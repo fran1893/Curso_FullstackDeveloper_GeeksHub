@@ -1,0 +1,20 @@
+.Character .card {
+    background-color: aliceblue;
+    padding-bottom: 0.2em;
+
+    & .card-img-top {
+        width: 100%;
+    }
+
+    &:hover {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+}
+
+// .Character .card .card-img-top {
+//     width: 100%;
+// }
+
+// .Character .card:hover {
+//     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+// }

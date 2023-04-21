@@ -1,0 +1,6 @@
+.CharactersList .list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4em;
+    margin-bottom: 2em;
+}
