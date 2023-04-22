@@ -5,31 +5,9 @@ import rickMortyService from "../../_services/rickMortyService";
 import NavPage from "../../components/NavPage/NavPage";
 
 export default function CharactersList() {
-   const initialCharacters = [
-      {
-         id: 1,
-         name: "Rick Sanchez",
-         image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-      },
-      {
-         id: 2,
-         name: "Morty Smith",
-         image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-      },
-      {
-         id: 3,
-         name: "Summer Smith",
-         image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-      },
-      {
-         id: 3,
-         name: "Summer Smith",
-         image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-      },
-   ];
 
    // hooks
-   const [characters, setCharacters] = useState(initialCharacters);
+   const [characters, setCharacters] = useState([]);
    const [page, setPage] = useState(1);
    const [pages, setPages] = useState(0);
 
@@ -50,6 +28,7 @@ export default function CharactersList() {
 
    return (
       <div className="CharactersList">
+         <h2>Character List</h2>
          <NavPage page={page} pages={pages} setPage={setPage} />
 
          <div className="list">

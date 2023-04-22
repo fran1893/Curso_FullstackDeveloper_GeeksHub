@@ -1,0 +1,19 @@
+.CharacterDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & .card {
+        width: 50%;
+        background-color: rgb(153, 177, 198);
+        border: 1px solid black;
+        border-radius: 5%;
+        padding-bottom: 0.2em;
+        margin: 3em;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    & .card-img-top {
+        width: 90%;
+    }
+}
