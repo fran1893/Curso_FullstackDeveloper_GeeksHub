@@ -13,7 +13,7 @@ const sleep = (ms) => {
 rickMortyService.getAllCharacters = async (page = 1) => {
   const apiUrl = `${BASE_URL}/character/?page=${page}`;
 
-  await sleep(2000);
+  await sleep(1000);
   return axios.get(apiUrl);
 };
 
