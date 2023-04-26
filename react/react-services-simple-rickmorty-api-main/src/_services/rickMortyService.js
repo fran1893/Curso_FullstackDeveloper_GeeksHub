@@ -5,7 +5,7 @@ const BASE_URL = "https://rickandmortyapi.com/api";
 const rickMortyService = {};
 
 const sleep = (ms) => {
- return new Promise((r) => {
+  return new Promise((r) => {
     setTimeout(r, ms);
   });
 };
@@ -13,15 +13,13 @@ const sleep = (ms) => {
 rickMortyService.getAllCharacters = async (page = 1) => {
   const apiUrl = `${BASE_URL}/character/?page=${page}`;
 
-  await sleep(1000);
-  return axios.get(apiUrl);
+  return await axios.get(apiUrl);
 };
 
 rickMortyService.getDetailCharacter = async (id) => {
   const apiUrl = `${BASE_URL}/character/${id}`;
 
-  await sleep(2000);
-  return axios.get(apiUrl);
+  return await axios.get(apiUrl);
 };
 
 rickMortyService.getEpisodes = async (url) => {

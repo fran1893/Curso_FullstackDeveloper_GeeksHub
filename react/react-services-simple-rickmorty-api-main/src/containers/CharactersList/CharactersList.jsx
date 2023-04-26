@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { increment, decrement } from "./listPagination";
 import Character from "../../components/Character/Character";
 import "./CharactersList.scss";
 import rickMortyService from "../../_services/rickMortyService";
@@ -16,16 +18,17 @@ const override = {
 };
 
 export default function CharactersList() {
-  // hooks
+  // HOOKS
   const [characters, setCharacters] = useState([]);
-  const [page, setPage] = useState(1);
+  const listPaginationState = useSelector((state) => state.listPagination);
+  let { page } = listPaginationState;
   const [pages, setPages] = useState(0);
 
   useEffect(() => {
     getAllCharacters(page);
   }, [page]);
 
-  // functions
+  // FUNCTIONS
   const getAllCharacters = async (page) => {
     try {
       const response = await rickMortyService.getAllCharacters(page);
@@ -36,12 +39,18 @@ export default function CharactersList() {
     }
   };
 
+  // RETURN
   return (
     <>
       {characters[0] ? (
         <div className="CharactersList">
           <h2>Character List</h2>
-          <NavPage page={page} pages={pages} setPage={setPage} />
+          <NavPage
+            page={page}
+            pages={pages}
+            increment={increment()}
+            decrement={decrement()}
+          />
 
           <div className="list">
             {characters.map((char) => (
@@ -49,7 +58,12 @@ export default function CharactersList() {
             ))}
           </div>
 
-          <NavPage page={page} pages={pages} setPage={setPage} />
+          <NavPage
+            page={page}
+            pages={pages}
+            increment={increment()}
+            decrement={decrement()}
+          />
         </div>
       ) : (
         <CircleLoader

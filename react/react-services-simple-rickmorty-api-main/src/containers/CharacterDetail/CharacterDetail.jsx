@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  incrementDetail,
+  decrementDetail,
+  setDetail,
+} from "../CharactersList/listPagination";
 import rickMortyService from "../../_services/rickMortyService";
 import NavPage from "../../components/NavPage/NavPage";
 import "./CharacterDetail.scss";
@@ -8,7 +14,7 @@ import CircleLoader from "react-spinners/CircleLoader";
 const override = {
   position: "absolute",
   left: "50%",
-  right:"50%",
+  right: "50%",
   top: "50%",
   bottom: "50%",
   transform: "translate(-50%, -50%)",
@@ -19,18 +25,21 @@ export default function CharacterDetail() {
   // HOOKS
   const { id } = useParams();
   const [character, setCharacter] = useState({});
-  const [page, setPage] = useState(+id);
+  const listPaginationState = useSelector((state) => state.listPagination);
+  let { pageDetail } = listPaginationState;
+  const dispatch = useDispatch();
   const [pages, setPages] = useState(0);
   const [episodes, setEpisodes] = useState([]);
+  let payload = +id;
+
+  useEffect(() => {
+    dispatch(setDetail(payload));
+  }, []);
 
   useEffect(() => {
     getPages();
-    getDetailCharacter(page);
-  }, [page]);
-
-  // useEffect(() => {
-  //   getEpisodes()
-  // }, []);
+    getDetailCharacter(pageDetail);
+  }, [pageDetail]);
 
   //   FUNCTIONS
   async function getDetailCharacter(id) {
@@ -86,18 +95,33 @@ export default function CharacterDetail() {
               <b>LOCATION:</b> {character.location.name}
             </p>
             <p>
+              <b>CREATED:</b> {character.created}
+            </p>
+            <p>
               <b>EPISODES:</b>
             </p>
-            {episodes.map((epi) => {
-              return (
-                <div key={epi.id}>
-                  <b>{epi.episode}</b> - {epi.name}
-                </div>
-              );
-            })}
+            <table className="episodesTable">
+              <tr>
+                <th>Episode</th>
+                <th>Title</th>
+              </tr>
+              {episodes.map((epi) => {
+                return (
+                  <tr key={epi.id}>
+                    <td>{epi.episode}</td>
+                    <td>{epi.name}</td>
+                  </tr>
+                );
+              })}
+            </table>
           </div>
           <hr />
-          <NavPage page={page} pages={pages} setPage={setPage} />
+          <NavPage
+            page={pageDetail}
+            pages={pages}
+            increment={incrementDetail()}
+            decrement={decrementDetail()}
+          />
         </div>
       ) : (
         <CircleLoader
