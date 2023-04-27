@@ -6,6 +6,7 @@ import {
   decrementDetail,
   setDetail,
 } from "../CharactersList/listPagination";
+import { dateFormat } from "../../_util/util";
 import rickMortyService from "../../_services/rickMortyService";
 import NavPage from "../../components/NavPage/NavPage";
 import "./CharacterDetail.scss";
@@ -95,14 +96,14 @@ export default function CharacterDetail() {
               <b>LOCATION:</b> {character.location.name}
             </p>
             <p>
-              <b>CREATED:</b> {character.created}
+              <b>CREATED:</b> {dateFormat(character.created)}
             </p>
             <p>
               <b>EPISODES:</b>
             </p>
             <table className="episodesTable">
               <tr>
-                <th>Episode</th>
+                <th>Episodes ({episodes.length})</th>
                 <th>Title</th>
               </tr>
               {episodes.map((epi) => {

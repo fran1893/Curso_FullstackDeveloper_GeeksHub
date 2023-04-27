@@ -2,19 +2,33 @@
     background-color: aliceblue;
     padding-bottom: 0.2em;
 
-    & .card-img-top {
+    .card-img-top {
         width: 100%;
     }
 
     &:hover {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
+
+    .status-icon {
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 30px auto 0;
+        background-color: #dadde2;
+        border-radius: 50%;
+        box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 220, 0.2) 0%, transparent 100%);
+        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 220, 0.2) 0%, transparent 100%);
+        background-image: -o-linear-gradient(-45deg, rgba(255, 255, 220, 0.2) 0%, transparent 100%);
+        background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 220, 0.2) 0%, transparent 100%);
+    }
+
+    .Alive {
+        background-color: rgb(27, 248, 27);
+    }
+
+    .Dead {
+        background-color: rgb(255, 34, 34);
+    }
 }
-
-// .Character .card .card-img-top {
-//     width: 100%;
-// }
-
-// .Character .card:hover {
-//     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-// }

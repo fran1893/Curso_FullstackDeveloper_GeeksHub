@@ -15,6 +15,8 @@ export default function Character({ character }) {
         <img src={character.image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{character.name}</h5>
+          <span>Status: {character.status}<span className={"status-icon " + character.status}></span></span>
+          
         </div>
       </div>
     </div>
