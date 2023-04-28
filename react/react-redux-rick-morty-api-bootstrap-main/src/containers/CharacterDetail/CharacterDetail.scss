@@ -1,0 +1,19 @@
+.CharacterDetail {
+
+    .app-container--small {
+        max-width: 1000px;
+    }
+
+    .tableFixHead {
+        overflow-y: auto;
+        height: 300px;
+
+        thead th {
+            position: sticky;
+            top: 0px;
+            background-color: #fff;
+        }
+    }
+
+
+}
