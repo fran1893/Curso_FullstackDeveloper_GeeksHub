@@ -56,6 +56,7 @@ module.exports = async (req, res) => {
 
       const token = generateToken({
          userId: user.id,
+         userName: user.nombre,
          userRole: user.role.role,
       });
 

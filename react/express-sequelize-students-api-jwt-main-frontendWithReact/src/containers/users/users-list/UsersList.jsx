@@ -3,7 +3,6 @@ import tokenStorageService from "../../../_services/tokenStorageService";
 import userService from "../../../_services/userService";
 export default function UsersList() {
   const token = tokenStorageService.get();
-  console.log(token);
 
   //hooks
   const [users, setUsers] = useState([]);
