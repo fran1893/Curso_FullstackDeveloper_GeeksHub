@@ -15,7 +15,6 @@ export default function UsersList() {
   const getStudents = async (token) => {
     try {
       const response = await userService.getStudents(token);
-      console.log(response);
       setUsers(response.results);
     } catch (error) {
       console.log(error);

@@ -6,7 +6,7 @@ const userService = {};
 userService.getStudents = async (token) => {
   const config = {
     headers: {
-      Authoriation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   };
 
