@@ -1,6 +1,6 @@
 import { decodeToken } from "react-jwt";
 import { store } from "../../app/store";
-import { setIsLoggedIn, setToken, setUserInfo } from "../users/authSlice";
+import { setIsLoggedIn, setToken, setUserInfo } from "./authSlice";
 
 // Loggin
 export const updateAuthStoreStateLogIn = (token) => {

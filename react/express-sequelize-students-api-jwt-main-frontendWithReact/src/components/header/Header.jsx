@@ -1,8 +1,30 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Header.scss";
+import { useSelector } from "react-redux";
+import { updateAuthStoreStateLogOut } from "../../features/authentication/updateAuthState";
+import {
+  MdPersonOutline,
+  MdOutlineLogout,
+  MdKeyboardArrowDown,
+  MdOutlineLogin,
+} from "react-icons/md";
 
 export default function Header() {
+  // HOOKS
+  const navigate = useNavigate();
+  const authState = useSelector((state) => state.auth);
+  const isLoggedIn = authState.isLoggedIn;
+  const { name, role } = authState.userInfo;
+  const isAdmin = role == "admin";
+
+  // HANDLERS
+  const handleLogout = () => {
+    updateAuthStoreStateLogOut();
+    navigate("/");
+  };
+
+  // RETURN
   return (
     <div className="Header">
       <nav className="navbar">
@@ -16,30 +38,50 @@ export default function Header() {
           <li className="nav-item">
             <NavLink to="/about">About</NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink to="/admin">Admin</NavLink>
-          </li>
+          {isAdmin && (
+            <>
+              <li className="nav-item">
+                <NavLink to="/admin">Admin</NavLink>
+              </li>
+            </>
+          )}
         </ul>
 
         <ul className="navbar-nav">
-          <li className="nav-item">
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/register">Register</NavLink>
-          </li>
-          <li className="nav-item dropdown ">
-            <a>User name</a>
+          {!isLoggedIn && (
+            <>
+              <li className="nav-item">
+                <NavLink to="/login">
+                  <MdOutlineLogin />
+                  Login
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/register">Register</NavLink>
+              </li>
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              <li className="nav-item dropdown ">
+                <a>
+                  <MdPersonOutline className="icon" />
+                  {name} <MdKeyboardArrowDown />
+                </a>
 
-            <ul className="dropdown-menu">
-              <li className="dropdown-item">
-                <NavLink to="/profile">Profile</NavLink>
+                <ul className="dropdown-menu">
+                  <li className="dropdown-item">
+                    <NavLink to="/profile">Profile</NavLink>
+                  </li>
+                  <li className="dropdown-item">
+                    <a onClick={handleLogout}>
+                      <MdOutlineLogout /> Logout
+                    </a>
+                  </li>
+                </ul>
               </li>
-              <li className="dropdown-item">
-                <a>Logout</a>
-              </li>
-            </ul>
-          </li>
+            </>
+          )}
         </ul>
       </nav>
     </div>

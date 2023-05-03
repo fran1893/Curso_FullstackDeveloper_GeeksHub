@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import authService from "../../_services/authService";
 import tokenStorageService from "../../_services/tokenStorageService";
-import { updateAuthStoreStateLogIn } from "../users/updateAuthState";
+import { updateAuthStoreStateLogIn } from "../../features/authentication/updateAuthState";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const initialFormValues = {
@@ -10,13 +12,21 @@ export default function Login() {
   };
 
   // HOOKS
+  const navigate = useNavigate();
+
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const [loginError, setLoginError] = useState(null);
 
+  const authState = useSelector((state) => state.auth);
+
+  const isAdmin = authState.userInfo.role == "admin";
+
   useEffect(() => {
-    //
-  }, []);
+    if (authState.userToken) {
+      isAdmin ? navigate("/admin") : navigate("/");
+    }
+  }, [authState.userToken]);
 
   // HANDLERS
   const handleSubmit = (e) => {
