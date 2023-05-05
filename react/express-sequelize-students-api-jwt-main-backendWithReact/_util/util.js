@@ -1,6 +1,6 @@
 const global = require("../config/global");
 
-const getPagesFromCountLimit = (count, limit) => Math.round(count / limit);
+const getPagesFromCountLimit = (count, limit) => Math.ceil(count / limit);
 const normalizePage = (page, max) => {
    page = +page || 1;
 
