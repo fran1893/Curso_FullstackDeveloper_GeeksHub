@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import userService from "../../_services/userService";
-import { UsersList } from "../../components";
+import { UsersList, DataListTable } from "../../components";
+import { dateFormat } from "../../_utils/date";
 
 export default function Admin() {
   // HOOKS
@@ -37,6 +38,10 @@ export default function Admin() {
         return setUsersPage((page) => page + 1);
       case "prev":
         return setUsersPage((page) => page - 1);
+      case "first":
+        return setUsersPage(1);
+      case "last":
+        return setUsersPage(totalPages);
     }
   };
 
@@ -57,6 +62,14 @@ export default function Admin() {
     }
   };
 
+  const newUsers = (users) =>
+      users.map((user) => {
+         user.alumno = user?.alumno ? "YES" : "NO";
+         user.role = user?.role ? user.role.role : "undefined";
+         user.fecha_nacimiento = dateFormat(user.fecha_nacimiento);
+         return user;
+      });
+
   // RETURN
   return (
     <>
@@ -64,11 +77,34 @@ export default function Admin() {
         <>
           <h1>Admin</h1>
           <UsersList
-            users={users}
+            users={newUsers(users)}
             page={usersPage}
             count={usersCount}
-            onChange={handleUsersList}
             totalPages={totalPages}
+            onChange={handleUsersList}
+          />
+
+          <br />
+
+          <DataListTable
+            data={users}
+            title="Users"
+            count={usersCount}
+            headers={["ID", "Name", "Last name", "Email", "Birthday", "Role"]}
+            attributes={[
+              "id",
+              "nombre",
+              "apellidos",
+              "email",
+              "fecha_nacimiento",
+              "role"
+            ]}
+            pagination={{
+              page: usersPage,
+              count: usersCount,
+              totalPages: totalPages,
+            }}
+            onChange={handleUsersList}
           />
         </>
       )}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import authService from "../../_services/authService";
-import tokenStorageService from "../../_services/tokenStorageService";
 import { updateAuthStoreStateLogIn } from "../../features/authentication/updateAuthState";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
 
 export default function Login() {
   const initialFormValues = {
@@ -35,12 +35,16 @@ export default function Login() {
       email: formValues.email,
       password: formValues.password,
     };
-    login(credentials);
+    if (
+      validator.isEmail(credentials.email) &&
+      validator.isByteLength(credentials.password, { min: 8, max: undefined })  // TODO agregar mensaje en caso de que no ponga bien los datos
+    ) {
+      login(credentials);
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setFormValues({
       ...formValues,
       [name]: value, //key: value
@@ -53,7 +57,6 @@ export default function Login() {
       const response = await authService.login(credentials);
       console.log(response);
       const token = response.token;
-      tokenStorageService.save(token);
       setLoginError(null);
       updateAuthStoreStateLogIn(token);
     } catch (error) {
@@ -66,9 +69,9 @@ export default function Login() {
   return (
     <div>
       <h1>Login</h1>
-      <pre style={{ textAlign: "left", width: "250px", margin: "auto" }}>
+      {/* <pre style={{ textAlign: "left", width: "250px", margin: "auto" }}>
         {JSON.stringify(formValues, null, 2)}
-      </pre>
+      </pre> */}
       <form noValidate onSubmit={handleSubmit}>
         <label htmlFor="">Email</label> <br />
         <input
@@ -80,7 +83,7 @@ export default function Login() {
         <br />
         <label htmlFor="">Password</label> <br />
         <input
-          type="text"
+          type="password"
           name="password"
           value={formValues.password}
           onChange={handleChange}
