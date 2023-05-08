@@ -1,0 +1,29 @@
+version: "3.6"
+services:
+  app_dental_clinic:
+    build: .
+    restart: always
+    container_name: dentalClinicBackend-dockerizada
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+  adminer:
+    image: adminer
+    container_name: adminer_barna
+    restart: always
+    ports:
+      - 8080:8080
+
+  db_dentalclinic:
+    image: mysql:5.7
+    restart: always
+    container_name: dentalClinic_db
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+volumes:
+  node_modules:
