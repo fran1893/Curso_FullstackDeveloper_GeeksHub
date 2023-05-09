@@ -8,7 +8,5 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN npm install
-RUN sequelize db:create
-RUN npm run db-reset
 
 CMD ["npm", "run", "dev"]
