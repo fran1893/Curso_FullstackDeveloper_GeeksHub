@@ -1,0 +1,9 @@
+version: "3.6"
+services:
+  web_php:
+    image: php:8.0-apache
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8000:80"
