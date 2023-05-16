@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->string("description");
-            $table->enum('status', ['in progress', 'finished']);
+            $table->enum('status', ['in progress', 'finished'])->default("in progress");
             $table->unsignedBigInteger('user_id');
             $table->foreign("user_id")->references('id')->on('users');
             $table->timestamps();
