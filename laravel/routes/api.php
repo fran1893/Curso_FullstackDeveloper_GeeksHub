@@ -28,7 +28,7 @@ Route::post(
     '/tasks',
     [TaskController::class, "createTask"]
 );
-Route::get('/tasks', [TaskController::class, "getTask"]);
+Route::get('/tasks/{id}', [TaskController::class, "getTask"]);
 
 Route::put('/tasks/{id}', [TaskController::class, "updateTask"]);
 

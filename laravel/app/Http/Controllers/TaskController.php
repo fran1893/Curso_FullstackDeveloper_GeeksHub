@@ -6,6 +6,7 @@ use App\Models\Task;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use PhpParser\Node\Stmt\TryCatch;
 
 class TaskController extends Controller
@@ -18,7 +19,22 @@ class TaskController extends Controller
             $userId = $request->input("user_id");
             // $status = $request->input("status");
 
-            // // TODO Validaciones
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|string|max:10',
+                'description' => 'required',
+                'user_id' => 'required'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        'success' => true,
+                        'message' => "Body validation error",
+                        'errors' => $validator->errors()
+                    ],
+                    400
+                );
+            }
 
             // // insert usiing query builder
             // $newTask = DB::table('tasks')->insert([
@@ -50,9 +66,28 @@ class TaskController extends Controller
         }
     }
 
-    public function getTask()
+
+    public function getTask($id)
     {
-        return "Get Tasks";
+        try {
+            $tasks = Task::query()
+                ->where('user_id', '=', $id)
+                ->get()
+                ->toArray();
+
+            return response()->json([
+                "success" => true,
+                "message" => "Get tasks successfully",
+                "data" => $tasks
+            ], 201);
+        } catch (\Throwable $th) {
+
+            return response()->json([
+                "success" => false,
+                "message" => "error creating task",
+                "error" => $th->getMessage()
+            ], 500);
+        }
     }
 
     public function updateTask($id)
@@ -62,6 +97,33 @@ class TaskController extends Controller
 
     public function deleteTask($id)
     {
-        return 'Delete Task with id: ' . $id;
+        try {
+            $task = Task::query()
+                ->where("id", "=", $id)
+                ->first();
+
+            if (!$task) {
+
+                return response()->json([
+                    "success" => true,
+                    "message" => "Task doesnt exists",
+                ], 404);
+            }
+
+            $tasksDeleted = Task::destroy($id);
+
+            return response()->json([
+                "success" => true,
+                "message" => "Deleted task successfully",
+                "data" => $tasksDeleted
+            ], 201);
+        } catch (\Throwable $th) {
+
+            return response()->json([
+                "success" => false,
+                "message" => "error deleting task",
+                "error" => $th->getMessage()
+            ], 500);
+        }
     }
 }
