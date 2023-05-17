@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserContoller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,12 +26,27 @@ Route::get('/', function () {
 });
 
 // TASKS
-Route::post(
-    '/tasks',
-    [TaskController::class, "createTask"]
-);
-Route::get('/tasks/{id}', [TaskController::class, "getTask"]);
+Route::group([
+    'middleware' => ['auth:sanctum']
+], function () {
+    Route::post('/tasks', [TaskController::class, 'createTask']);
+    Route::get('/tasks', [TaskController::class, 'getAllTasks']);
+    Route::put('/tasks/{id}', [TaskController::class, 'updateTask']);
+    Route::delete('/tasks/{id}', [TaskController::class, 'deleteTask']);
+});
 
-Route::put('/tasks/{id}', [TaskController::class, "updateTask"]);
 
-Route::delete('/tasks/{id}', [TaskController::class, "deleteTask"]);
+// AUTH
+
+Route::post("/register", [AuthController::class, "register"]);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth:sanctum');
+
+
+Route::group([
+    'middleware' => ['auth:sanctum', 'IsAdmin']
+], function () {
+    Route::get('/users', [UserContoller::class, 'getAllUsers']);
+});
+
+
