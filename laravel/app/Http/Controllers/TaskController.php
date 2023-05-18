@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -76,10 +77,13 @@ class TaskController extends Controller
         try {
             $userId = auth()->user()->id;
 
-            $tasks = Task::query()
-                ->where('user_id', '=', $userId)
-                ->get()
-                ->toArray();
+            // $tasks = Task::query()
+            //     ->where('user_id', '=', $userId)
+            //     ->get();
+
+            $tasks = User::query()
+                ->find($userId)
+                ->tasks;
 
             return response()->json([
                 "success" => true,
