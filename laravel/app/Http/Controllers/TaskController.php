@@ -206,4 +206,62 @@ class TaskController extends Controller
             ], 500);
         }
     }
+
+    public function addUserToTask(Request $request, $id)
+    {
+        try {
+
+            $validator = Validator::make($request->all(), [
+                'user_id' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(
+                    [
+                        'success' => true,
+                        'message' => "Body validation error",
+                        'errors' => $validator->errors()
+                    ],
+                    400
+                );
+            }
+
+
+
+            // Comprobar que la tarea exista
+            $task = Task::query()
+                ->where("id", "=", $id)
+                ->first();
+
+            if (!$task) {
+
+                return response()->json([
+                    "success" => true,
+                    "message" => "Task doesnt exists",
+                ], 404);
+            }
+            // Comprobar que el usuario exista
+            $userId = $request->input('user_id');
+            $taskId = $id;
+
+            // QUERY BUILDER
+            $addUserToTask = DB::table('task_user')->insert([
+                "user_id" => $userId,
+                "task_id" => $taskId
+            ]);
+
+            return response()->json([
+                "success" => true,
+                "message" => "Add task to user successfully",
+                "data" => $taskId
+            ], 201);
+        } catch (\Throwable $th) {
+
+            return response()->json([
+                "success" => false,
+                "message" => "error adding task to user",
+                "error" => $th->getMessage()
+            ], 500);
+        }
+    }
 }
