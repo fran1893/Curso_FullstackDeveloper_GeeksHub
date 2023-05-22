@@ -253,7 +253,7 @@ class TaskController extends Controller
             return response()->json([
                 "success" => true,
                 "message" => "Add task to user successfully",
-                "data" => $taskId
+                "data" => $addUserToTask
             ], 201);
         } catch (\Throwable $th) {
 
